@@ -1,0 +1,48 @@
+
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto;
+         max-width: 800px;
+         width: 95%; 
+         font: 18px/1.5 sans-serif;
+         }
+        .example-wrapper code { background: #F5F5F5;
+         padding: 2px 6px;
+          }
+    </style>
+
+     <div class="example-wrapper">
+        <h1>Recette</h1>
+        <p>Voici la recette de {{recipe.title}}</p> 
+
+
+
+
+{# <div class="example-wrapper">
+		<h1 class="card-title">{{recipe.title}}</h1>
+
+		<div class="card">
+			<img src="{{recipe.media}}" class="card-img-top" alt="photo de la recette." >
+			<div class="card-body">
+            <div>ingrédient(listes dynamiques)</div>
+            <div>nombres de personnes</div>
+            <div>durée de préparation</div>			
+			{% for difficult in recipe.difficult %}
+				<p class="card-category">difficulté :{{difficult.name}}</p>
+
+				<a href="{{path('recipe_difficult',{'id' : difficult.id})}}" class="btn btn-primary">difficulté</a>
+			{% endfor %}
+            <div>date de création</div>
+            <div>date de modification</div>
+            <div>auteur</div>
+            <div>commentaires</div>
+            <div>nombres de likes</div>
+            <div>création/modif/suppression possible par auteur ou admin
+            </div>
+		</div>
+	</div> #}
+    {% endblock %} 
