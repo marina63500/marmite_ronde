@@ -1,3 +1,7 @@
+:root {
+  --admin-nav-width: 25%;
+}
+
 body {
     background-color: rgb(135, 138, 235);
     display:flex;
@@ -10,10 +14,25 @@ main{
 }
 
 header{
-    background-color: aqua;      
+    background-color: rgb(62, 220, 220);      
 }
 
+h1{
+    color: white;
+    text-align: center;    
+}
 
+.nav-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-register{
+    display:flex;
+    justify-content: center;
+    gap:10px;
+    
+}
 footer{
     color:rgb(10, 10, 10);
     display: flex;
@@ -22,8 +41,90 @@ footer{
     font-size: large;
 }
 
-h1{
-    color: white;
-    text-align: center; 
- 
+.image{
+    height: 150px;
 }
+
+
+
+/* sidebar css */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+
+.sidebar {
+  position: fixed;
+  width: var(--admin-nav-width);
+  height: 100vh;
+  background: #243b50;
+  font-size: 0.65em;
+}
+
+.admin-main {
+  margin-left: var(--admin-nav-width);
+}
+
+.nav {
+  position: relative;
+  margin: 0 15%;
+  text-align: right;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
+.nav ul {
+  list-style: none;
+  
+  li {
+    position: relative;
+    margin: 3.2em 0;
+    
+    a {
+      line-height: 5em;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.4em;
+      color: rgba(#FFF, 0.35);
+      display: block;
+      transition: all ease-out 300ms;
+    }
+    
+    &.active a {
+      color: white;
+    }
+    
+    &:not(.active)::after {
+      opacity: 0.2;
+    }
+    
+    &:not(.active):hover a {
+      color: rgba(#FFF, 0.75);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 0.2em;
+      background: black;
+      left: 0;
+      bottom: 0;
+      background-image: linear-gradient(to right, #5e42a6, #b74e91)
+    }
+  }
+}
+
+  
+ /* tableau de la page admin ingredient  */
+th, tr, td{
+    border:solid 2px;
+    text-align: center;    
+    color:aliceblue;
+    width: 150px;
+    height: 50px;
+}
+
+  .base-admin table {
+    margin-inline: auto;
+  }

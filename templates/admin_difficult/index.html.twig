@@ -1,0 +1,67 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+{# PARTIE ADMIN difficultés tableau avec tout #}
+
+
+
+<div class="example-wrapper">
+
+		<section class="container ">
+
+			<table>
+				<h1>Difficultés</h1>
+
+				<tr>
+					<th scope="col">n° id</th>
+					<th scope="col">Name</th>
+
+					<th scope="col">show</th>
+					<th scope="col">remove</th>
+					<th scope="col">Edit</th>
+				</tr>
+                
+				<a href="{{path('admin_difficult_create')}}" class="btn btn-success">ajouter</a>
+
+				{% for difficult in difficults %}
+					<tbody>
+						<tr>
+							<td>
+								{{difficult.id}}
+							</td>
+
+							<td>
+								{{difficult.name}}
+							</td>
+
+							<td>
+								<a href="{{path('admin_difficult_show',{id : difficult.id})}}" class="btn btn-info">voir</a>
+							</td>
+
+							<td>
+								<a href="{{path('admin_difficult_remove',{id : difficult.id})}}" class="btn btn-danger" type="submit">supprimer</a>
+							</td>
+
+							<td>
+								<a href="{{path('admin_difficult_edit',{id : difficult.id})}}" class="btn btn-warning">modifier</a>
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				{% endfor %}
+			</table>
+
+
+		</section>
+
+</div>
+{% endblock %}
+
+
+
+
+

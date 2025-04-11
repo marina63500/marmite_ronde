@@ -4,7 +4,7 @@
 
 
 {% block body %}
-    <style>
+     <style>
         .example-wrapper { margin: 1em auto;
          max-width: 800px;
          width: 95%; 
@@ -13,36 +13,40 @@
         .example-wrapper code { background: #F5F5F5;
          padding: 2px 6px;
           }
-    </style>
+    </style> 
 
      <div class="example-wrapper">
-        <h1>Recette</h1>
-        <p>Voici la recette de {{recipe.title}}</p> 
+        <h1>Recette</h1>   
 
-
-
-
-{# <div class="example-wrapper">
 		<h1 class="card-title">{{recipe.title}}</h1>
 
 		<div class="card">
-			<img src="{{recipe.media}}" class="card-img-top" alt="photo de la recette." >
-			<div class="card-body">
-            <div>ingrédient(listes dynamiques)</div>
-            <div>nombres de personnes</div>
-            <div>durée de préparation</div>			
-			{% for difficult in recipe.difficult %}
-				<p class="card-category">difficulté :{{difficult.name}}</p>
+			<img src="{{recipe.image}}" class="card-img-top" alt="photo de la recette." >
+		    <div class="card-body">
+                <div>Auteur : {{recipe.user.pseudo}}</div> 
+               
 
-				<a href="{{path('recipe_difficult',{'id' : difficult.id})}}" class="btn btn-primary">difficulté</a>
-			{% endfor %}
-            <div>date de création</div>
-            <div>date de modification</div>
-            <div>auteur</div>
-            <div>commentaires</div>
-            <div>nombres de likes</div>
-            <div>création/modif/suppression possible par auteur ou admin
-            </div>
-		</div>
-	</div> #}
+            <div>Nombres de personnes : {{recipe.nbPeople}} pers </div>
+            <div>durée : {{recipe.duration}} mn</div>	
+
+			   
+			<p class="card-category">difficulté : {{recipe.difficult.name}}</p>
+
+			 {% for ingredient in recipe.ingredients %}
+                    <div>ingrédients : {{ingredient.name}}</div>
+             {% endfor %}	    
+			   
+
+            <div>date de création : {{recipe.createdAt|date("d/m/Y")}}</div>          
+            
+     </div>
+        
+     <div>
+        {% for comment in recipe.comments %}
+       <p>nom : {{comment.user.pseudo}}</p>
+      <p>commentaire :  {{comment.content}}</p>       
+         {% endfor %}
+          <a type="submit" href="{{path('comment_create')}}">créer un commentaire</a>
+     </div>
+	
     {% endblock %} 

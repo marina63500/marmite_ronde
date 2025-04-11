@@ -1,0 +1,66 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+{# PARTIE ADMIN INGREDIENTS!!!tableau avec tout #}
+
+
+
+<div class="example-wrapper">
+
+		<section class="container ">
+
+			<table>
+				<h1>Les ingrédients</h1>
+
+				<tr>
+					<th scope="col">n° id</th>
+					<th scope="col">Name</th>
+
+					<th scope="col">show</th>
+					<th scope="col">remove</th>
+					<th scope="col">Edit</th>
+				</tr>
+                
+				<a href="{{path('app_admin_ingredient_create')}}" class="btn btn-success">ajouter</a>
+
+				{% for ingredient in ingredients %}
+					<tbody>
+						<tr>
+							<td>
+								{{ingredient.id}}
+							</td>
+
+							<td>
+								{{ingredient.name}}
+							</td>
+
+							<td>
+								<a href="{{path('app_admin_ingredient_show',{id : ingredient.id})}}" class="btn btn-info">voir</a>
+							</td>
+
+							<td>
+								<a href="{{path('app_admin_ingredient_remove',{id : ingredient.id})}}" class="btn btn-danger" type="submit">supprimer</a>
+							</td>
+
+							<td>
+								<a href="{{path('app_admin_ingredient_edit',{id : ingredient.id})}}" class="btn btn-warning">modifier</a>
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				{% endfor %}
+			</table>
+
+
+		</section>
+
+</div>
+{% endblock %}
+
+
+
+

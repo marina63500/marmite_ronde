@@ -1,0 +1,25 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+
+
+	<div class="container mt-5 mb-5 ">
+		<div class="d-flex justify-content">
+			<div class="col-md-6">
+
+				{# formulaire modification difficultés  #}
+
+				{{ form_start(form) }}
+
+				{{ form_row(form.name) }}
+
+
+				<button type="submit">Soumettre</button>
+
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

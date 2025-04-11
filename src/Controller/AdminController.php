@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class AdminController extends AbstractController
 {
@@ -16,4 +16,6 @@ final class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
+
+   
 }

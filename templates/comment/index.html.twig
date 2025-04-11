@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommentController!{% endblock %}
+
+{% block body %}
+
+    <h1>Crée ton commentaire</h1>
+    <div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-6">
+ {# ce que je veux afficher sur mon form  #}
+    
+            {{ form_start(form) }}     
+    <div class="col-12">
+            {{ form_row(form.user) }}
+            {{ form_row(form.content) }} 
+                       
+            
+           
+
+
+	        <button type="submit ">Soumettre</button>
+
+            {{form_end(form)}}
+
+
+
+
+{% endblock %}

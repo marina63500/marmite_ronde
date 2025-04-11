@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
+#[ORM\HasLifecycleCallbacks]        //en dehors de la classe et pour mettre jour et heure a jour j
 class Recipe
 {
     #[ORM\Id]
@@ -22,7 +23,7 @@ class Recipe
     #[ORM\Column]
     private ?int $duration = null;
 
-    
+
 
     #[ORM\Column]
     private ?int $nbPeople = null;
@@ -56,11 +57,7 @@ class Recipe
      */
     #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'recipes')]
     private Collection $ingredients;
-
-    #[ORM\OneToOne(inversedBy: 'recipe', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Media $media = null;
-
+   
     /**
      * @var Collection<int, Like>
      */
@@ -70,6 +67,9 @@ class Recipe
     #[ORM\ManyToOne(inversedBy: 'recipes')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Difficult $difficult = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
 
     public function __construct()
     {
@@ -108,7 +108,7 @@ class Recipe
         return $this;
     }
 
-   
+
 
     public function getNbPeople(): ?int
     {
@@ -254,17 +254,7 @@ class Recipe
         return $this;
     }
 
-    public function getMedia(): ?Media
-    {
-        return $this->media;
-    }
-
-    public function setMedia(Media $media): static
-    {
-        $this->media = $media;
-
-        return $this;
-    }
+ 
 
     /**
      * @return Collection<int, Like>
@@ -307,4 +297,24 @@ class Recipe
 
         return $this;
     }
+
+    #[ORM\PrePersist]                   //pour mettre heure et jour a maintenant
+    public function setTimestamps(): void
+    {
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
 }
