@@ -7,6 +7,7 @@ use App\Entity\Recipe;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,15 +22,22 @@ class CommentType extends AbstractType
             // ->add('updateAt', null, [
             //     'widget' => 'single_text',
             // ])
-            ->add('content')
-            ->add('recipe', EntityType::class, [
-                'class' => Recipe::class,
-                'choice_label' => 'title',
+            ->add('content', TextareaType::class, [
+                'attr' => [
+                    'rows' => 5,
+                    'placeholder' => 'Entrez votre commentaire ici...',
+                ],
             ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'pseudo',
-            ])
+//je mets en commentaire la recette et le user car je ne veux pas que ca demande a l utilisateur de choisir son nom et sa recette,ca doit etre automatique
+
+            // ->add('recipe', EntityType::class, [
+            //     'class' => Recipe::class,
+            //     'choice_label' => 'title',
+            // ])
+            // ->add('user', EntityType::class, [
+            //     'class' => User::class,
+            //     'choice_label' => 'pseudo',
+            // ])
         ;
     }
 

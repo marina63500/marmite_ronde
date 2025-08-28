@@ -1,3 +1,4 @@
+/* css général */
 :root {
   --admin-nav-width: 25%;
 }
@@ -45,8 +46,21 @@ footer{
     height: 150px;
 }
 
+/* card show */
+.card-body {
+    padding: 1.25rem;
+    background-color: rgb(86, 65, 105);
+    color:#f9f9f9;
+   
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
 
 
+/* partie css admin */
 /* sidebar css */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
@@ -115,7 +129,7 @@ footer{
   }
 }
 
-  
+
  /* tableau de la page admin ingredient  */
 th, tr, td{
     border:solid 2px;
@@ -128,3 +142,50 @@ th, tr, td{
   .base-admin table {
     margin-inline: auto;
   }
+
+  /* commentaires */
+/* Conteneur des commentaires */
+.comment-container {
+  width: 90% ;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Chaque commentaire */
+.comment {
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Texte du commentaire */
+.comment p {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 8px;
+}
+
+/* Infos  */
+.comment small {
+  display: block;
+  font-size: 13px;
+  color: #666;
+}
+
+
+
+/* Dernier commentaire  */
+.comment:last-child {
+  border-bottom: none;
+}

@@ -29,6 +29,14 @@ class Comment
     #[ORM\ManyToOne(inversedBy: 'comments')]
     private ?User $user = null;
 
+
+   
+    public function __construct()
+{ // pour gerer la date a aujourd'hui en auto
+    $this->createdAt = new \DateTimeImmutable();
+}
+
+
     public function getId(): ?int
     {
         return $this->id;

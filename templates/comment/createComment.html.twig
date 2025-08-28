@@ -4,23 +4,24 @@
 
 {% block body %}
 
-    {# <h1>Crée ton commentaire</h1>
+    <h1>Crée ton commentaire</h1>
     <div class="container mt-5 mb-5">
     <div class="d-flex justify-content-center">
-        <div class="col-md-6"> #}
+        <div class="col-md-6">
  {# ce que je veux afficher sur mon form  #}
     
-            {# {{ form_start(form) }}     
+            {{ form_start(form) }}     
     <div class="col-12">
-                {{ form_row(form.user) }}
-                {{ form_row(form.recipe) }}
+            {# {% if app.user %} #}
+              <p> Bonjour {{ app.user.pseudo }}</p>
+            {# {% endif %} #}
+                {# {{ form_row(form.recipe) }} #}
                 {{ form_row(form.content) }}
 
                 <button type="submit ">Soumettre</button>
 
-            {{ form_end(form) }} #}
+            {{ form_end(form) }}
 
-   
 
 
 

@@ -25,6 +25,9 @@
 						{% if app.user %}
 							{# user connecté #}
 							<a class="nav-link " href="{{path('recipe_add')}}"><button class="btn btn-warning">crée une recette</button></a>
+							<li class="nav-item">
+						<a class="nav-link " aria-current="page" href="{{path('user_recipes')}}"> MesRecettes</a>
+							</li>
 							
 							<p class="nav-link mb-0">bienvenue ,
 								{{app.user.email}}</p>
