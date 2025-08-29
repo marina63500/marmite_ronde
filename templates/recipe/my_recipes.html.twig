@@ -7,11 +7,47 @@
 <div class="container">
     <h1>les superbes recettes de {{ user.pseudo }}</h1>
 
-   
+ <div class="row g-5">
+
+			{% for recipe in recipes %}
+
+
+				<div class="col-md-4 col-lg-4 col-sm-6">
+					<div class="card h-100">
+						<img src="{{recipe.image}}" class="card-img-top object-fit-cover image"  alt="photo de la recette.">
+						<div class="card-body">
+							<h5 class="card-title">
+								Titre :{{recipe.title}}</h5>
+							<p class="card-difficult">
+								difficulté :{{recipe.difficult.name}}
+							</p>
+							<p class="card-user">
+								Auteur :{{recipe.user.pseudo}}
+							</p>
+
+							<p class="card-duration">
+								durée :{{recipe.duration}}mn</p>
+
+                            <p>Créée le :{{recipe.createdAt|date('d/m/Y')}}</p>
+
+							
+
+							<a href="{{path('recipe_show',{'id' : recipe.id})}}" class="btn btn-warning">détail</a>
+						</div>
+					</div>
+				</div>
+
+			{% endfor %}
+		</div>
+
+
+
+
+
                 {# text-muted class bootstrap mieux que balise small pour l'accessibilité #}
                
 
-    <div class="recipe-list">
+    {# <div class="recipe-list">
         {% for recipe in recipes %}
             <div class="recipe-item">
                 <h2><a href="{{ path('recipe_show', {'id': recipe.id}) }}">{{ recipe.title }}</a></h2>
@@ -28,5 +64,5 @@
         {% else %}
             <p>Vous n'avez pas encore créé de recettes.</p>
         {% endfor %}
-    </div>
+    </div> #}
 {% endblock %}

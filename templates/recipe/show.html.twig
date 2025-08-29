@@ -2,61 +2,67 @@
 
 
 {% block body %}
-	<div class="example-wrapper">
-		<h1>Recette</h1>
+	<div class="container">
 
 		<h1 class="card-title">{{recipe.title}}</h1>
 
-		<div class="card">
-			<img src="{{recipe.image}}" class="card-img-top" alt="photo de la recette.">
-			<div class="card-body">
-				<div>Auteur :
-					{{recipe.user.pseudo}}</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<img src="{{recipe.image}}" class="card-img-top" alt="photo de la recette.">
+			</div>
+			<div class="col-lg-6">
+				<div class="card">
+
+					<div class="card-body">
+						<div>Auteur :
+							{{recipe.user.pseudo}}</div>
 
 
-				<div>Nombres de personnes :
-					{{recipe.nbPeople}}
-					pers
+						<div>Nombres de personnes :
+							{{recipe.nbPeople}}
+							pers
+						</div>
+						<div>durée :
+							{{recipe.duration}}
+							mn</div>
+
+
+						<p class="card-category">difficulté :
+							{{recipe.difficult.name}}</p>
+
+						{% for ingredient in recipe.ingredients %}
+							<div>ingrédients :
+								{{ingredient.name}}</div>
+						{% endfor %}
+
+
+						<div>date de création :
+							{{recipe.createdAt|date("d/m/Y")}}</div>
+
+					</div>
 				</div>
-				<div>durée :
-					{{recipe.duration}}
-					mn</div>
-
-
-				<p class="card-category">difficulté :
-					{{recipe.difficult.name}}</p>
-
-				{% for ingredient in recipe.ingredients %}
-					<div>ingrédients :
-						{{ingredient.name}}</div>
-				{% endfor %}
-
-
-				<div>date de création :
-					{{recipe.createdAt|date("d/m/Y")}}</div>
-
 			</div>
 
+
 			{# <div class="comment-container">
-																		        <h2>Commentaires</h2>
-																		            <div class="comment-list">
-																		                {% for comment in recipe.comments %}
-																		                <p><strong>Auteur : </strong>{{comment.user.pseudo}}</p>
-																		                <p><strong>Commentaire :</strong> {{comment.content}}</p> 
-																		                    <small>Posté le : {{comment.createdAt|date("d/m/Y H:i")}} #}
+																					        <h2>Commentaires</h2>
+																					            <div class="comment-list">
+																					                {% for comment in recipe.comments %}
+																					                <p><strong>Auteur : </strong>{{comment.user.pseudo}}</p>
+																					                <p><strong>Commentaire :</strong> {{comment.content}}</p> 
+																					                    <small>Posté le : {{comment.createdAt|date("d/m/Y H:i")}} #}
 			{# {% if comment.updatedAt %}
-																		                (modifié le {{ comment.updatedAt|date('d/m/Y H:i') }})
-																		                {% endif %}#}
+																					                (modifié le {{ comment.updatedAt|date('d/m/Y H:i') }})
+																					                {% endif %}#}
 			{# </small> 
-																		            </div>
-																		         {% endfor %} #}
+																					            </div>
+																					         {% endfor %} #}
 				<h2>
 			Commentaires
 			</h2>
-				<div class="comment-container"> 
-				{% for comment in recipe.comments
+				<div class="comment-container"> {% for comment in recipe.comments
 				 | sort((a, b) => a.createdAt < b.createdAt ? 1 : -1) %}
-				 {# sort filtre par date  car j ai deja tous dans recipe #}
+					{# sort filtre par date  car j ai deja tous dans recipe #}
 					<div class="comment">
 						<p>
 							<strong>Auteur :</strong>
@@ -66,8 +72,8 @@
 							Posté le
 							{{ comment.createdAt|date('d/m/Y H:i') }}
 							{# {% if comment.updatedAt %}
-																																										                    <span class="updated">(modifié le {{ comment.updatedAt|date('d/m/Y H:i') }})</span>
-																																										                {% endif %} #}
+																																																	                    <span class="updated">(modifié le {{ comment.updatedAt|date('d/m/Y H:i') }})</span>
+																																																	                {% endif %} #}
 						</small>
 					</div>
 				{% else %}
@@ -81,18 +87,18 @@
 		</div>
 
 		{# {% for comment in recipe.comments %}
-												                <p><strong>{{ comment.user.pseudo }}</strong> : {{ comment.content }}</p>
-												            {% else %}
-												                <p>Aucun commentaire pour cette recette.</p>
-												            {% endfor %}   
-												     </div>
-												      <div>
-												            <h2>Ajouter un commentaire</h2>
-												            {{ form_start(form) }}
-												                {{ form_widget(form) }}
-												                <button class="btn btn-primary">Envoyer</button>
-												            {{ form_end(form) }}
-												        </div> #}
+														                <p><strong>{{ comment.user.pseudo }}</strong> : {{ comment.content }}</p>
+														            {% else %}
+														                <p>Aucun commentaire pour cette recette.</p>
+														            {% endfor %}   
+														     </div>
+														      <div>
+														            <h2>Ajouter un commentaire</h2>
+														            {{ form_start(form) }}
+														                {{ form_widget(form) }}
+														                <button class="btn btn-primary">Envoyer</button>
+														            {{ form_end(form) }}
+														        </div> #}
 
 
 	{% endblock %}
